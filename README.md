@@ -1,8 +1,7 @@
 # TKH Cyber Security Part 2 Final Project
 
 Our team’s project will be fully hosted on the cloud, with a hybrid environment of: 
-Open source CyberSec technologies hosted on AWS EC2 instances
-AWS services which substitute functionalities of open source CyberSec applications
+Open source CyberSec technologies hosted on AWS EC2 instances and AWS services which substitute functionalities of open source CyberSec applications
 
 ## Open Source Technologies
 
