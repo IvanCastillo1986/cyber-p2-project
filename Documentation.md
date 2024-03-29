@@ -1,4 +1,85 @@
+# pfSense
+
+### Step 1. Create a VPC
+Name is pfSense-firewall
+Ipv4 CIDR is 10.1.0.0/16
+Everything else will stay at default 
+Click create
+
+### Step 2. Create two subnets
+VPC ID will be VPC we just created
+Subnet 1: Name is internal-private
+Ipv4 CIDR 10.1.1.0/24
+Add Subnet 2: Name is external-public
+Ipv4 CIDR 10.1.2.0/24
+Click Create
+
+### Step 3. Create Internet Gateway
+Name is pfSense
+Attach to VPC by pressing Action Button then Attach to VPC (Choose VPC we created)
+Click attach
+
+### Step 4. Create a EC2 Instance 
+Click Launch Instance 
+Name pfSense
+Choose AMI: From search type in pfsense and select (You will have to pay for this AMI)
+Size is already chosen for you
+Create a Key pair: named pfsense (Use RSA and .pem file)
+Go to Network settings and click edit
+Choose VPC we created 
+Subnet will be the external-private
+Enable Auto -assign public IP (we can always change later)
+Keep Create security group 
+Inbound rules are already created from AMI
+Launch Instance 
+
+### Step 5. Create Network interface
+Name is pfSense-Internal
+Connect to internal-private subnet
+Attach security group to the NI by pressing Actions, Attach, and select Instance we created
+Press Attach
+
+### Step 6. Create Route Tables
+Go to the VPC and select the box next to it
+Go to details and click on the Main route table number
+Click the box next to it, then go to Routes
+Click Edit Routes , then Add route: Destination 0.0.0.0/0, Target Internet gateway (Choose the Instance we created)
+Click save
+Go to Subnet associations and click Edit subnet associations
+Choose the external-public subnet and click save
+Click route table
+Name internalroutes and choose VPC
+Click create
+Go to Edit routes and Add route
+Destination 0.0.0.0/0, Target Internet Gateway (pfSense)
+Save route
+Go to Subnet Associations,  Edit subnet associations, choose internal-private and click save
+
+### Step 7.
+Go to the EC2 instance (pfSense), click on Networking
+Scroll to Network interface, choose pfsense-internal
+Go to Actions, Change source/dest.check and Disable.
+
+### Step 8. Go to pfSense dashboard
+Open a new tab and use the public IP address
+You will need to enter the username and password.
+User is admin. To find password go back to the Instance, Click Actions, then Monitor and troubleshoot, then Get system log.
+Password will be at the top. Now copy it
+Enter the Username and password
+Click next until you get to the admin password page and use same password
+Click finish
+### Step 9. Configure
+Go to Interfaces then Assignments
+Add your LAN to the interface
+
+### Step 10. Ping to test connectivity 
+Do to Diagnostics and ping 
+
+
+
 # Kali Linux
+
+### Create EC2 instance
 Navigate to the EC2 page in the AWS Services Console.
 
 Name and tags
@@ -46,8 +127,7 @@ Configure Storage
 The AWS free tier allows up to 30 GB of General Purpose SSD or Magnetic storage. The default is 12 GB gp2, so let’s take advantage and manually change the size and throughput quality of volume!
 1x:  30 GiB  gp3
 
-
-Connect to Kali instance
+### Connect to Kali instance
 Check the box for the KALI instance you’ve just created, and click on the  ‘Connect’  tab.
 
 Click on the ‘copy to clipboard’ icon next to the chmod command on number 3.  This command will secure the key-pair file you downloaded earlier to 
@@ -74,20 +154,16 @@ You’ve just added the public key to your system’s list of known hosts. Whene
 
 You should now be connected to the Kali instance!
 
-Update Kali instance
+### Update Kali instance
 Run:
 $  sudo apt update
 $  sudo apt upgrade
 ...to update the debian dependencies.
 
 
-
-
-
-
 # Metasploit
 
-Create Ubuntu instance
+### Create Ubuntu instance
 Name:  METASPLOIT-ubuntu-mr-rbt
 Key pair name:  METASPLOIT-ubuntu-mr-rbt-KEY-PAIR
 
@@ -98,7 +174,7 @@ Launch the instance.
 
 You’ll be directed to the EC2 Instances page.
 
-Connect to Ubuntu instance
+### Connect to Ubuntu instance
 Check the box for the METASPLOIT instance you’ve just created, and click on the  ‘Connect’  tab.
 
 Click on the ‘copy to clipboard’ icon next to the chmod command on number 3.  This command will secure the key-pair file you downloaded earlier to 
@@ -124,13 +200,13 @@ You’ve just added the public key to your system’s list of known hosts. Whene
 
 You should now be connected to the Ubuntu METASPLOIT instance!
 
-Update Ubuntu instance
+### Update Ubuntu instance
 Run:
 $  sudo apt update
 $  sudo apt upgrade
 ...to update the debian dependencies.
 
-Install Metasploit
+## Install Metasploit
 Now install some initial dependencies:
 $  sudo apt install ruby ruby-dev build-essential zlib1g zlib1g-dev libpq-dev libpcap-dev libsqlite3-dev
 
@@ -158,7 +234,7 @@ $  ./metasploit-framework
 Congrats! You’ve just run Metasploit!!
 
 
-Wazuh solution
+# Wazuh solution
 The  ‘Wazuh manager’  instance will comprise the following Wazuh components:
 * Wazuh Indexer
 * Wazuh Server
@@ -170,7 +246,7 @@ The ‘Wazuh agent’ will be installed on the following endpoint:
 
 
 
-Wazuh manager
+## Wazuh manager
 
 I’d like to mention three options here:
 
@@ -180,7 +256,7 @@ I’d like to mention three options here:
 
 Let’s go with Linux Ubuntu AMI!
 
-
+### Create Ubuntu instance
 Name:  WAZUH-manager-mr-rbt
 Key pair name:  WAZUH-manager-mr-rbt-KEY-PAIR
 
@@ -191,7 +267,7 @@ Launch the instance.
 
 You’ll be directed to the EC2 Instances page.
 
-Connect to Ubuntu instance
+### Connect to Ubuntu instance
 Check the box for the WAZUH instance you’ve just created, and click on the  ‘Connect’  tab.
 
 Click on the ‘copy to clipboard’ icon next to the chmod command on number 3.  This command will secure the key-pair file you downloaded earlier to 
@@ -217,7 +293,7 @@ You’ve just added the public key to your system’s list of known hosts. Whene
 
 You should now be connected to the Ubuntu WAZUH instance!
 
-Update Ubuntu instance
+### Update Ubuntu instance
 Run:
 $  sudo apt update
 $  sudo apt upgrade
@@ -225,6 +301,7 @@ $  sudo apt upgrade
 
 
 Great! We now have an EC2 instance dedicated to our Wazuh manager. But now we need to give it a GUI. 
+
 LXDE stands for Light-weight X11 Desktop Environment. It’s great for cloud-based servers.
 
 Run the install command:
@@ -243,6 +320,7 @@ We need a VNC (Virtual Network Computing) client application on our host, and a 
 
 We’ll be using x11vnc on the instance to accept the connection from our host’s VNC client.
 
+## x11vnc
 Let’s run the install command:
 $  sudo apt install x11vnc
 
@@ -258,6 +336,7 @@ You should see some output messages about the service, including the IP and Port
 But instead of just running it manually every time, let’s create a systemd unit file so that we can manage x11vnc as a systemd service.
 This allows us to start and stop x11vnc, as well as defining some other utilities while it runs.
 
+### Create systemd unit file
 Create a  ‘.service’  unit file in a nested  ‘systemd/system’  directory:
 $  sudo nano /lib/systemd/system/x11vnc.service
 
@@ -298,14 +377,14 @@ What does this file do?
 * ‘WantedBy’  specifies the target that this service is associated with. Here, it’s set to  ‘multi-user.target’,  which is a standard target that represents a system running in multi-user mode  (for example, all services are running, except for graphical user interface)
 
 
-Essentially, it does the following:
+Essentially, the unit file does the following:
 * Starts after some other services have been started / target points have been reached
 * Forking, since x11vnc creates a child process from the -forever clause everytime something connects to it
 * The ExecStart and ExecStop commands and Restart are commands that we would write in manually to start/stop/restart it
 * We want it to be restarted on failure
 * We also want the service to be started before the process reaches the multi-user target
 
-
+### Use systemd unit file
 Now that we’ve created the unit, you need to let systemd know that they exist. I believe it’s like a refresh:
 $  sudo systemctl daemon-reload
 
@@ -323,7 +402,7 @@ You should see the Port number again. Make a note of that number, to use next.
 
 You’ve just installed, configured, and run x11vnc!
 
-Allow VNC access
+### Allow VNC access
 Before you proceed, go back to the WAZUH EC2 instance’s Security Group and allow for VNC port traffic.
 You’ll need that port number (the default port is 5900).
 EC2 Instance page  ->  WAZUH-manager-mr-rbt  ->  Details panel  ->  Details  ->  Security groups  ->  
@@ -334,12 +413,22 @@ Port range:  5900
 Source:  Anywhere-IPv4  ;  0.0.0.0/0
 Description:  For VNC traffic
 
-Install TigerVNC
+## TigerVNC
 Now you’ll need to download and install a VNC desktop client on our host computer (in this case, it’s an m1 Mac).
-You’ll be using TigerVNC for this. It started as a fork of TightVNC over a decade ago. The most notable difference between the two might be that TightVNC allows file transfers, and TigerVNC provides quality remote display functionality. You shouldn’t be using a VNC to transfer files, as SCP protocol allows you to do this securely and easily. 
+You’ll be using TigerVNC for this. It started as a fork of TightVNC over a decade ago. The most notable difference between the two might be that TightVNC allows file transfers, and TigerVNC provides quality remote display functionality. You don't need a VNC to transfer files, as SCP protocol allows you to do this securely and easily. 
 
 The quality option for viewing the Wazuh Dashboard would be TigerVNC.
 If you have Homebrew installed, you can EASILY use its installer:
 $  brew install tiger-vnc
 Otherwise, you’ll first need to install Homebrew (it’s worth it! It makes it so much easier to download packages that might be tedious to install).
+
+Execute TigerVNC with the command:
+$  vncviewer
+
+A small window should pop up, prompting the connection details.
+Enter the instance's public IP address and port number, separated by a colon:
+54.227.178.232:5900
+
+A window should pop up, displaying the remote EC2 instance's LXDE GUI.
+Congrats!
 
