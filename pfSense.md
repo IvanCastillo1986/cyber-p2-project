@@ -6,7 +6,7 @@
 ## Step 1. Create a VPC
 Name is `pfSense-firewall`<br>
 Ipv4 CIDR is `10.1.0.0/16`\
-Everything else will stay at default  
+Everything else will stay at default.  
 Click `create`
 
 ## Step 2. Create two subnets

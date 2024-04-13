@@ -17,10 +17,8 @@ Wazuh
 Metasploitable
 
 **Attack Machine**<br>
-Kali
+[Kali](/Kali.md)
 
 **Firewall**<br>
-pfSense
+[pfSense](/pfSense.md)
 
-
-[pfSense technical documentation](/pfSense.md)
