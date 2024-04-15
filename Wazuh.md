@@ -25,3 +25,7 @@ LXDE is a much older GUI environment for Ubuntu, and requires much more work, an
 
 [Amazon Linux AMI with RDP connection](/Wazuh_manager_Amazon_Linux.md)
 [Ubuntu with LXDE graphical interface](/Wazuh_manager_Ubuntu_LXDE.md)
+
+## Install Wazuh agent
+We will be installing our Wazuh agent on the Metasploit instance.
+[Wazuh agent on Metasploit instance](/Wazuh_agent_Metasploit.md)
