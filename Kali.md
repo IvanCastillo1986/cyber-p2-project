@@ -3,8 +3,8 @@
 ## Create EC2 instance
 Navigate to the EC2 page in the AWS Services Console.
 
-**Name and tags**<br>
-`KALI-mr-rbt`
+### Name and tags
+**KALI-mr-rbt**
 
 ### Application and OS Images _(Amazon Machine Image)_<br>
 Search **Kali** in the dashboard.<br>
@@ -47,6 +47,8 @@ This will create and download your key pair, which you’ll find in the **Downlo
 ### Configure Storage
 The AWS free tier allows up to 30 GB of **General Purpose SSD** or **Magnetic** storage. The default is **12 GB gp2**, so let’s take advantage and manually change the size and throughput quality of volume!<br>
 **1x:  30 GiB  gp3**
+
+
 
 ## Connect to Kali instance
 Check the box for the KALI instance you’ve just created, and click on the **Connect** tab.

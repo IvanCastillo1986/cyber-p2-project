@@ -1,139 +1,50 @@
-# Metasploit
+# Ubuntu with LXDE graphical interface
+
 
 ### Create Ubuntu instance
-Name:  METASPLOIT-ubuntu-mr-rbt
-Key pair name:  METASPLOIT-ubuntu-mr-rbt-KEY-PAIR
+**Name:**  `WAZUH-manager-mr-rbt`<br>
+**Key pair name:**  `WAZUH-manager-mr-rbt-KEY-PAIR`
 
-Create an EC2 instance with the Quick Start Ubuntu AMI.
+Create an EC2 instance with the  **Quick Start Ubuntu AMI**.
 
-Give it the same options as the KALI instance.
+Give it the same options as the WAZUH instance.<br>
 Launch the instance.
 
 You’ll be directed to the EC2 Instances page.
 
 ### Connect to Ubuntu instance
-Check the box for the METASPLOIT instance you’ve just created, and click on the  ‘Connect’  tab.
+Check the box for the WAZUH instance you’ve just created, and click on the  **Connect**  tab.
 
-Click on the ‘copy to clipboard’ icon next to the chmod command on number 3.  This command will secure the key-pair file you downloaded earlier to 
-Open your host machine’s terminal window.
-Navigate to the Downloads folder.
-Paste the command:
-$  chmod 400 "METASPLOIT-ubuntu-mr-rbt-KEY-PAIR.pem"
+Click on the  **copy to clipboard**  icon next to the chmod command on number 3.  This command will secure the key-pair file you downloaded earlier to <br>
+Open your host machine’s terminal window.<br>
+Navigate to the  **Downloads**  folder.<br>
+Paste the command:<br>
+`$  chmod 400 "WAZUH-manager-mr-rbt-KEY-PAIR.pem"`
 
-This command has secured the key-pair file you downloaded earlier to only provide read permissions to root user, and restricts any other user of any permissions.
+This command has secured the key-pair file you downloaded earlier to only provide read permissions to root user, and restricts any other user of any permissions.<br>
 
-Go back to the  ‘Connect to instance’  page, and copy the ssh command in the provided ‘Example’ at bottom of page.
+Go back to the  **Connect to instance**  page, and copy the ssh command in the provided  **Example**  at bottom of page.<br>
 Paste it into your host machine’s terminal.
 
-When prompted with:
-‘Are you sure you want to continue connecting (yes/no/[fingerprint])?’
-...type yes:
-$  yes
+When prompted with:<br>
+`Are you sure you want to continue connecting (yes/no/[fingerprint])?`<br>
+...type yes:<br>
+`$  yes`
 
-You should see the message:
-‘Warning: Permanently added '34.204.17.208' (ED25519) to the list of known hosts.’
+You should see the message:<br>
+`Warning: Permanently added '34.234.97.108' (ED25519) to the list of known hosts.`
 
-You’ve just added the public key to your system’s list of known hosts. Whenever you connect to this EC2 instance, the server will present it’s SSH key, and your host system will check in the  ‘known_hosts’  file for a matching key. If it matches, it is safe and you can connect.
-
-You should now be connected to the Ubuntu METASPLOIT instance!
-
-### Update Ubuntu instance
-Run:
-$  sudo apt update
-$  sudo apt upgrade
-...to update the debian dependencies.
-
-## Install Metasploit
-Now install some initial dependencies:
-$  sudo apt install ruby ruby-dev build-essential zlib1g zlib1g-dev libpq-dev libpcap-dev libsqlite3-dev
-
-Clone the Metasploit github repository:
-$  git clone https://github.com/rapid7/metasploit-framework.git
-$  ls
-
-You should now have a  ‘metasploit-framework’  directory in your current directory. Now change into that directory:
-$  cd metasploit-framework
-
-Install Ruby’s bundler package manager:
-$  sudo gem install bundler
-
-Install the Ruby packages for Metasploit:
-$  sudo bundle install
-
-Finish installing the rest of the packages for Metasploit that are Ruby dependencies:
-$  sudo bundle install
-$  ls
-
-You should now see an abundant list of directories and files.
-Check proper installation by executing the console for the Metasploit Framework:
-$  ./metasploit-framework
-
-Congrats! You’ve just run Metasploit!!
-
-
-# Wazuh solution
-The  ‘Wazuh manager’  instance will comprise the following Wazuh components:
-* Wazuh Indexer
-* Wazuh Server
-* Wazuh Dashboard
-
-The ‘Wazuh agent’ will be installed on the following endpoint:
-* Metasploit
-
-
-
-
-## Wazuh manager
-
-I’d like to mention three options here:
-
-1. We can install Wazuh on an EC2 server instance, and eventually operate it through the CLI. This would be the easiest installation since we would not need to go through hurdles in installing certain other requirements to be able to use a graphical user interface (GUI). AWS console doesn’t provide us with an easy way to connect to a GUI from MacOS or Linux. Using the Wazuh manager from the CLI can be daunting and unintuitive. We might also be missing out on potential features provided by Wazuh Dashboard.
-2. We can use the AWS Linux 2 AMI, which comes with MATE desktop pre-installed. But this is optimized to work with other AWS services which we might not be using, and it is not as widely supported by technologies as other Linux distributions.
-3. We can go through the longer and more complex installation process on an EC2 Ubuntu instance, with Gnome Desktop environment. We’ll need to install certain additional technologies to bridge the gap, but it will pay off in the end. 
-
-Let’s go with Linux Ubuntu AMI!
-
-### Create Ubuntu instance
-Name:  WAZUH-manager-mr-rbt
-Key pair name:  WAZUH-manager-mr-rbt-KEY-PAIR
-
-Create an EC2 instance with the Quick Start Ubuntu AMI.
-
-Give it the same options as the WAZUH instance.
-Launch the instance.
-
-You’ll be directed to the EC2 Instances page.
-
-### Connect to Ubuntu instance
-Check the box for the WAZUH instance you’ve just created, and click on the  ‘Connect’  tab.
-
-Click on the ‘copy to clipboard’ icon next to the chmod command on number 3.  This command will secure the key-pair file you downloaded earlier to 
-Open your host machine’s terminal window.
-Navigate to the Downloads folder.
-Paste the command:
-$  chmod 400 "WAZUH-manager-mr-rbt-KEY-PAIR.pem"
-
-This command has secured the key-pair file you downloaded earlier to only provide read permissions to root user, and restricts any other user of any permissions.
-
-Go back to the  ‘Connect to instance’  page, and copy the ssh command in the provided ‘Example’ at bottom of page.
-Paste it into your host machine’s terminal.
-
-When prompted with:
-‘Are you sure you want to continue connecting (yes/no/[fingerprint])?’
-...type yes:
-$  yes
-
-You should see the message:
-‘Warning: Permanently added '34.234.97.108' (ED25519) to the list of known hosts.’
-
-You’ve just added the public key to your system’s list of known hosts. Whenever you connect to this EC2 instance, the server will present it’s SSH key, and your host system will check in the  ‘known_hosts’  file for a matching key. If it matches, it is safe and you can connect.
+You’ve just added the public key to your system’s list of known hosts. Whenever you connect to this EC2 instance, the server will present it’s SSH key, and your host system will check in the  `known_hosts`  file for a matching key. If it matches, it is safe and you can connect.
 
 You should now be connected to the Ubuntu WAZUH instance!
 
+
 ### Update Ubuntu instance
 Run:
+```
 $  sudo apt update
 $  sudo apt upgrade
+```
 ...to update the debian dependencies.
 
 
@@ -268,4 +179,3 @@ Enter the instance's public IP address and port number, separated by a colon:
 
 A window should pop up, displaying the remote EC2 instance's LXDE GUI.
 Congrats!
-
