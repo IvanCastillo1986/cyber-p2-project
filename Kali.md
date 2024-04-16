@@ -32,7 +32,7 @@ This will create and download your key pair, which you’ll find in the **Downlo
 
 ### Network Settings
 **VPC:  Mr-Robot-VPC**<br>
-**Subnet:  mr-rbt-private-subnet**<br>
+**Subnet:  attack-subnet**<br>
 **Auto-assign public IP:  Enable**<br>
 
 ### Security Group name:
@@ -45,8 +45,9 @@ This will create and download your key pair, which you’ll find in the **Downlo
 **Source type:  Anywhere**
 
 ### Configure Storage
-The AWS free tier allows up to 30 GB of **General Purpose SSD** or **Magnetic** storage. The default is **12 GB gp2**, so let’s take advantage and manually change the size and throughput quality of volume!<br>
-**1x:  30 GiB  gp3**
+The AWS free tier allows up to 30 GB of **General Purpose SSD** or **Magnetic** storage. The default is **12 GB gp2**, so you can take advantage and manually change the size and throughput quality of volume!<br>
+But for now you might not need it. Provisioning extra hard disk space will use the allotted Free Tier storage, so let's stick to the default of 8GB.
+**1x:  8 GiB  gp3**
 
 
 
@@ -63,7 +64,7 @@ This command has secured the key-pair file you downloaded earlier to only provid
 
 Go back to the **Connect to instance** page, and copy the ssh command in the provided **Example** at bottom of page.<br>
 Paste it into your host machine’s terminal.<br>
-`$  ssh -i "KALI-mr-rbt-KEY-PAIR.pem" root@54.227.178.232`
+`$  ssh -i "KALI-mr-rbt-KEY-PAIR.pem" root@203.0.113.5`
 
 When prompted with:<br>
 `Are you sure you want to continue connecting (yes/no/[fingerprint])?`
@@ -71,7 +72,7 @@ When prompted with:<br>
 `$  yes`
 
 You should see the message:<br>
-`Warning: Permanently added '54.227.178.232' (ED25519) to the list of known hosts.`
+`Warning: Permanently added '203.0.113.5' (ED25519) to the list of known hosts.`
 
 You’ve just added the public key to your system’s list of known hosts. Whenever you connect to this EC2 instance, the server will present it’s SSH key, and your host system will check in the `known_hosts` file for a matching key. If it matches, it is safe and you can connect.
 

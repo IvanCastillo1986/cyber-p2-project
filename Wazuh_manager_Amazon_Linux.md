@@ -137,3 +137,14 @@ Use the login credentials shown from the  `wazuh-passwords.txt`  file.<br>
 Congrats! You’ve just accessed the Wazuh Dashboard being hosted on your EC2 instance.
 
 You can now begin deploying agents.
+
+
+## Configuration files
+Access the Wazuh configuration file at:<br>
+`$  /var/ossec/etc/ossec.conf`
+
+Access the Filebeat configuration file at:<br>
+`$  /etc/filebeat/filebeat.yml`
+
+Access the Wazuh passwords file at:<br>
+`$  sudo tar -O -xvf wazuh-install-files.tar wazuh-install-files/wazuh-passwords.txt`

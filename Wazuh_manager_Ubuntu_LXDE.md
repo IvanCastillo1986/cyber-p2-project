@@ -2,8 +2,8 @@
 
 
 ## Create Ubuntu instance
-**Name:**  `WAZUH-manager-mr-rbt`<br>
-**Key pair name:**  `WAZUH-manager-mr-rbt-KEY-PAIR`
+**Name:**  `WAZUH-manager`<br>
+**Key pair name:**  `WAZUH-manager-KEY-PAIR`
 
 Create an EC2 instance with the  **Quick Start Ubuntu AMI**.
 
@@ -19,7 +19,7 @@ Click on the  **copy to clipboard**  icon next to the chmod command on number 3.
 Open your host machine’s terminal window.<br>
 Navigate to the  **Downloads**  folder.<br>
 Paste the command:<br>
-`$  chmod 400 "WAZUH-manager-mr-rbt-KEY-PAIR.pem"`
+`$  chmod 400 "WAZUH-manager-KEY-PAIR.pem"`
 
 This command has secured the key-pair file you downloaded earlier to only provide read permissions to root user, and restricts any other user of any permissions.<br>
 
@@ -32,7 +32,7 @@ When prompted with:<br>
 `$  yes`
 
 You should see the message:<br>
-`Warning: Permanently added '34.234.97.108' (ED25519) to the list of known hosts.`
+`Warning: Permanently added '203.0.113.5' (ED25519) to the list of known hosts.`
 
 You’ve just added the public key to your system’s list of known hosts. Whenever you connect to this EC2 instance, the server will present it’s SSH key, and your host system will check in the  `known_hosts`  file for a matching key. If it matches, it is safe and you can connect.
 
@@ -161,7 +161,7 @@ Click on  '**Edit inbound rules**':<br>
 **Source type:**  _Custom TCP_<br>
 **Protocol:**  _TCP_<br>
 **Port range:**  _5900_<br>
-**Source:**  _Anywhere-IPv4  ;  0.0.0.0/0_<br>
+**Source:**  _My IP_<br>
 **Description:**  _For VNC traffic_<br>
 
 ### TigerVNC
@@ -178,7 +178,7 @@ Execute TigerVNC with the command:<br>
 
 A small window should pop up, prompting the connection details.<br>
 Enter the instance's public IP address and port number, separated by a colon:<br>
-`54.227.178.232:5900`
+`203.0.113.5:5900`
 
 A window should pop up, displaying the remote EC2 instance's LXDE GUI.<br>
 Congrats!

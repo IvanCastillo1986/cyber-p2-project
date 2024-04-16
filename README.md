@@ -13,10 +13,10 @@ Edward, Lawrence, Hope, Mario, Greta, Sadiqullah, Ivan
 ## Open Source Technologies
 
 **SIEM/IDS/IPS**<br>
-Wazuh
+[Wazuh](/Wazuh.md)
 
 **Vulnerable Machine**<br>
-Metasploitable
+[Metasploitable](/Metasploit.md)
 
 **Attack Machine**<br>
 [Kali](/Kali.md)
@@ -24,3 +24,6 @@ Metasploitable
 **Firewall**<br>
 [pfSense](/pfSense.md)
 
+NOTE:
+While following this guide, you’ll want to change the fake IPv4 IP address  ‘203.0.113.5’  to the stated public or private IP for your instance.
+This is a fake IP address reserved for demonstration purposes.
