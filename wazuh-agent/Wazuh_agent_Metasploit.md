@@ -18,7 +18,7 @@ Now we can install the GPG key:<br>
 `gpg --no-default-keyring --keyring gnupg-ring:/usr/share/keyrings/wazuh.gpg --import && chmod 644 /usr/share/keyrings/wazuh.gpg`  will import the GPG key into the GnuPG keyring. <br>
 * `--no-default-keyring`  tells the system not to use the default keyring.
 * `--keyring gnupg-ring:`  specifies the keyring’s location at  `/usr/share/keyrings/wazuh.gpg`.
-* `chmod 644 /usr/share/keyrings/wazuh.gpg`  changes the wazuh.gpg file permissions to give the owner read and write permissions. Everybody else willl only have read permissions.
+* `chmod 644 /usr/share/keyrings/wazuh.gpg`  changes the wazuh.gpg file permissions to give the owner read and write permissions. Everybody else will only have read permissions.
 
 Add the repository:<br>
 `$  echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.com/4.x/apt/ stable main" | tee -a /etc/apt/sources.list.d/wazuh.list`
@@ -31,7 +31,7 @@ Use the AWS Console to navigate to your EC2 WAZUH-manager instance Details page.
 Copy the  Private IPv4 address  to your clipboard.<br>
 
 NOTE: Be sure to edit the WAZUH_MANAGER variable to contain your WAZUH-manager’s private IP that you just copied!<br>
-`$  WAZUH_MANAGER=“<WAZUH-manager private IP>“  apt-get  install  wazuh-agent`
+`$  WAZUH_MANAGER=“<WAZUH-manager private IP>“ apt-get install wazuh-agent`
 
 * `WAZUH_MANAGER=“<WAZUH-manager private IP>“`  -  this command sets the WAZUH_MANAGER environment variable to the manager’s IP address. This variable is used by the Wazuh agent to determine the Wazuh manager’s IP address or hostname. It can then send data to the manager using this variable. If the IP address or hostname of your manager ever changes, be certain to update it in the monitored endpoint’s environment variables as well.<br>
     * **Environment Variables**  are part of the environment in which processes run. These processes might be reliant upon these variables, so they access the variable when needed. These variables are commonly used to store configuration settings, system information, or paths to executables or libraries. It can be persistent or temporary. In this case, the Wazuh framework only uses it temporarily to define the manager’s IP address during installation, so that the Wazuh agent can communicate with the Wazuh server. 
@@ -57,4 +57,3 @@ $  apt-get update
 ## Configuration file
 You can access the Wazuh configuration file at:<br>
 `$  sudo nano /var/ossec/etc/ossec.conf`
-

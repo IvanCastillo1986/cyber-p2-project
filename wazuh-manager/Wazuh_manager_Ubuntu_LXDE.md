@@ -110,8 +110,8 @@ Exit nano, and write/save the file with  `ctrl + x` ,  `y` ,  and  `Enter`.
 
 What does this file do?<br>
 [Unit]
-`Description`  provides a human-readable description of the service.
-`After` specifies other systemd services that this unit depends on.
+`Description`  provides a human-readable description of the service.<br>
+`After` specifies other systemd services that this unit depends on.<br>
 `display-manager.service`,  `network.target`,  `syslog.target`  will be started, and then this unit will run after. (this property should be called  `Before`  instead)
 
 [Service]

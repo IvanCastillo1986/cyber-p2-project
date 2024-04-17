@@ -16,14 +16,19 @@ Edward, Lawrence, Hope, Mario, Greta, Sadiqullah, Ivan
 [Wazuh](/Wazuh.md)
 
 **Vulnerable Machine**<br>
-[Metasploitable](/Metasploit.md)
+[Metasploitable](components/Metasploit.md)
 
 **Attack Machine**<br>
-[Kali](/Kali.md)
+[Kali](components/Kali.md)
 
 **Firewall**<br>
-[pfSense](/pfSense.md)
+[pfSense](components/pfSense.md)
 
 NOTE:
 While following this guide, you’ll want to change the fake IPv4 IP address  ‘203.0.113.5’  to the stated public or private IP for your instance.
 This is a fake IP address reserved for demonstration purposes.
+
+The commands/output/code provided in this documentation is often preceded by a `$`.<br>
+This is meant to mimic a marker for terminal prompt.<br>
+When copy/pasting these commands, do not include the `$`.<br>
+Including it will probably throw an error.

@@ -23,9 +23,9 @@ I suggest going with the Amazon Linux instance.<br>
 LXDE is a much older GUI environment for Ubuntu, and requires much more work, and perhaps troubleshooting since it's not as actively maintained now. Additionally, the VNC connection carries more security risks.
 
 
-[Amazon Linux AMI with RDP connection](/Wazuh_manager_Amazon_Linux.md)
-[Ubuntu with LXDE graphical interface](/Wazuh_manager_Ubuntu_LXDE.md)
+[Amazon Linux AMI with RDP connection](/wazuh-manager/Wazuh_manager_Amazon_Linux.md)<br>
+[Ubuntu with LXDE graphical interface](/wazuh-manager/Wazuh_manager_Ubuntu_LXDE.md)
 
 ## Install Wazuh agent
-We will be installing our Wazuh agent on the Metasploit instance.
-[Wazuh agent on Metasploit instance](/Wazuh_agent_Metasploit.md)
+We will be installing our Wazuh agent on the Metasploit instance.<br>
+[Wazuh agent on Metasploit instance](/wazuh-agent/Wazuh_agent_Metasploit.md)

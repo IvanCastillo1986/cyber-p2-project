@@ -1,6 +1,16 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 git-formatting.md
+
+/wazuh-agent/wazuh-agent-processes.md
+/wazuh-agent/wazuh-agent-configurations.md
+/wazuh-agent/var-ossec-etc-ossec-conf.md
+
+/wazuh-manager/wazuh-manager-configurations.md
+/wazuh-manager/wazuh-manager-processes.md
+
+
+
 # test.js
 # /src/TestComponent.js
 # /src/Unused/
