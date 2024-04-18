@@ -13,16 +13,16 @@ Edward, Lawrence, Hope, Mario, Greta, Sadiqullah, Ivan
 ## Open Source Technologies
 
 **SIEM/IDS/IPS**<br>
-[Wazuh](/Wazuh.md)
+[Wazuh](/lab-components/Wazuh.md)
 
 **Vulnerable Machine**<br>
-[Metasploitable](components/Metasploit.md)
+[Metasploitable](/lab-components/Metasploit.md)
 
 **Attack Machine**<br>
-[Kali](components/Kali.md)
+[Kali](/lab-components/Kali.md)
 
 **Firewall**<br>
-[pfSense](components/pfSense.md)
+[pfSense](/lab-components/pfSense.md)
 
 NOTE:
 While following this guide, you’ll want to change the fake IPv4 IP address  ‘203.0.113.5’  to the stated public or private IP for your instance.
