@@ -54,6 +54,18 @@ $  sed -i "s/^deb/#deb/" /etc/apt/sources.list.d/wazuh.list
 $  apt-get update
 ```
 
+## Configure Security Group rules
+The  **Security Group**  acts as the virtual firewall at the EC2 instance level.<br>
+You'll need to allow traffic to and from your Wazuh agent.<br>
+At the bottom of the EC2 instances window, click on the  **Security**  tab.<br>
+`WAZUH-security-group`  ->  `Inbound rules`  ->  `Edit inbound rules`
+
+Add two rules:<br>
+Port range:  1514  |  Source: <Wazuh_manager_IP>  |  Description: For Wazuh agent<br>
+Port range:  1515  |  Source: <Wazuh_manager_IP>  |  Description: For Wazuh agent
+
+
 ## Configuration file
 You can access the Wazuh configuration file at:<br>
 `$  sudo nano /var/ossec/etc/ossec.conf`
+

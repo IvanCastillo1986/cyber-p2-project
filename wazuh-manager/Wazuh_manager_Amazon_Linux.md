@@ -22,11 +22,23 @@ Keep the default SSH rule with the source listed as  `0.0.0.0/0`  which means fr
 Launch the instance.<br>
 You’ll be directed to the EC2 Instances page.
 
+
+### Configure Security Group rules
+The  **Security Group**  acts as the virtual firewall at the EC2 instance level.<br>
+You'll need to allow traffic to and from your Wazuh agent.<br>
+At the bottom of the EC2 instances window, click on the  **Security**  tab.<br>
+`WAZUH-security-group`  ->  `Inbound rules`  ->  `Edit inbound rules`
+
+Add two rules:<br>
+Port range:  1514  |  Source: <Wazuh_agent_IP>  |  Description: For Wazuh agent<br>
+Port range:  1515  |  Source: <Wazuh_agent_IP>  |  Description: For Wazuh agent
+
+
 ### Connect to Amazon Linux 2 AMI instance
 You already know how to connect via SSH. So let’s try a new connection.<br>
 After the instance is up and running, click on the  ‘_EC2 Instance Connect_’ tab.
 
-Change the username from  `root`  to  `ec2-user`. This is the default user for any EC2 instance. Additionally, it’s the only user that an Amazon Linux AMI accepts.<br>
+Change the username from  `root`  to  `ec2-user`. This is the default user for any EC2 instance. Additionally, it’s the only user that the Amazon Linux AMI accepts.<br>
 Click on  _Connect_.
 
 A new browser window will launch, and you’ll conveniently be securely connected to your Linux instance.<br>
@@ -148,44 +160,3 @@ Access the Filebeat configuration file at:<br>
 
 Access the Wazuh passwords file at:<br>
 `$  sudo tar -O -xvf wazuh-install-files.tar wazuh-install-files/wazuh-passwords.txt`
-
-
-## Troubleshooting
-
-### If the Wazuh Dashboard web interface isn't showing any Agents listed:
-
-1. Check the Wazuh agent's configuration file with:<br>
-`$  sudo nano /var/ossec/etc/ossec.conf`
-
-It should list the Wazuh server near the top:<br>
-```
-<client>
-    <server>
-        <address>[Wazuh_server_IP]</address>
-        <port>1514</port>
-        <protocol>tcp</protocol>
-    </server>
-</client>
-```
-
-2. Check the Wazuh server's configuration file with:
-
-Check for the agent on the Wazuh Manager instance with the `manage-agents` tool:<br>
-`$  sudo /var/ossec/bin/manage_agents`<br>
-`(L)ist already added agents (L)`<br>
-`Choose your action: A,E,L,R or Q:`<br>
-`$  L`<br>
-
-3. If it's not listed, you can manually add an agent to the Wazuh manager instance with the `manage-agents` tool:<br>
-`$  sudo /var/ossec/bin/manage_agents`
-
-`(A)dd an agent (A).`<br>
-`Choose an action: A,E,L,R or Q:  A`<br>
-`$  A`<br>
-
-```
-Please provide the following:
-   * A name for the new agent: <choose a descriptive name, like 'METASPLOIT-ubuntu'>
-   * The IP Address of the new agent: <the private IP address of your Metasploit Wazuh agent instance>
-Confirm adding it?(y/n): y
-```
