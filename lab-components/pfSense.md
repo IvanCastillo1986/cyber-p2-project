@@ -1,6 +1,6 @@
 # pfSense
 
-![pfSense logo](./assets/pfSense-logo.jpeg)
+![pfSense logo](../assets/pfSense-logo.jpeg)
 
 
 ## Step 1. Create a VPC
